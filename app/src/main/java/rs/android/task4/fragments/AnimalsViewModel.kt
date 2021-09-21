@@ -5,18 +5,20 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.*
+import rs.android.task4.COLUMN_NAME
+import rs.android.task4.DATABASE_SOURCE_NAME_ROOM
 import rs.android.task4.locator.locateLazy
 import rs.android.task4.repository.Repository
 import rs.android.task4.repository.Animal
 
 class AnimalsViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: Repository by locateLazy()
-    private var sortingColumn = "name"
+    private var sortingColumn = COLUMN_NAME
 
     private var _animalsFlow = MutableStateFlow<List<Animal>>(emptyList())
     val animalsFlow: SharedFlow<List<Animal>> = _animalsFlow.asStateFlow()
 
-    private var _sourceDbFlow = MutableStateFlow("room")
+    private var _sourceDbFlow = MutableStateFlow(DATABASE_SOURCE_NAME_ROOM)
     val sourceDbFlow: SharedFlow<String> = _sourceDbFlow.asStateFlow()
 
     init {
@@ -34,8 +36,6 @@ class AnimalsViewModel(application: Application) : AndroidViewModel(application)
     }
 
     fun emitAllSortBy(sortingColumn: String) {
-       // renderAnimals(viewModel.animalsFlow.replayCache.flatten())
-//        _animalsFlow.value = (repository.getAllSortBy(sortingColumn) as StateFlow).value
         repository.getAllSortBy(sortingColumn).onEach { _animalsFlow.emit(it) }
             .launchIn(viewModelScope)
     }

@@ -46,8 +46,8 @@ class AddFragment : Fragment(R.layout.add_fragment) {
 
         views {
             if (animal == null) {
-                (activity as MainActivity)
-                    .setActionBarTitle(resources.getString(R.string.bar_title_fragment_add))
+                activity?.title = resources.getString(R.string.bar_title_fragment_add)
+
                 addButton.setOnClickListener { _ ->
 
                     val name = textInputName.text.toString()
@@ -59,8 +59,8 @@ class AddFragment : Fragment(R.layout.add_fragment) {
                     }
                 }
             } else {
-                (activity as MainActivity)
-                    .setActionBarTitle(resources.getString(R.string.bar_title_fragment_edit))
+                activity?.title = resources.getString(R.string.bar_title_fragment_edit)
+
                 addButton.visibility = View.INVISIBLE
                 updateButton.visibility = View.VISIBLE
                 deleteButton.visibility = View.VISIBLE

@@ -18,7 +18,7 @@
     <string name="bar_title_fragment_sort">Sort by</string>
     <string name="bar_title_fragment_add">Add New Animal</string>
     <string name="bar_title_fragment_edit">Edit Animal</string>
-    <string name="bar_title_fragment_main">Animals</string>
+    <string name="bar_title_fragment_animals">Animals</string>
     <string name="info_fragment_add">You must fill in all fields!</string>
     <string name="info_fragment_delete">Are you sure you want to remove the animal?</string>
     <string name="alert_dialog_button_ok">OK</string>

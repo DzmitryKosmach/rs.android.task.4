@@ -38,8 +38,8 @@ class SortFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as MainActivity)
-            .setActionBarTitle(resources.getString(R.string.bar_title_fragment_sort))
+
+        activity?.title = resources.getString(R.string.bar_title_fragment_sort)
 
         prefs = PreferenceManager.getDefaultSharedPreferences(activity)
         val sortingBy = prefs?.getString(

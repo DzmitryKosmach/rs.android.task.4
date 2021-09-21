@@ -59,8 +59,8 @@ class AnimalsFragment : Fragment(R.layout.animals_fragment), OnAnimalItemClickLi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as MainActivity)
-            .setActionBarTitle(resources.getString(R.string.bar_title_fragment_main))
+
+        this.activity?.title = resources.getString(R.string.bar_title_fragment_animals)
         val animalAdapter = AnimalAdapter(this)
         prefs = PreferenceManager.getDefaultSharedPreferences(activity)
 
@@ -113,7 +113,7 @@ class AnimalsFragment : Fragment(R.layout.animals_fragment), OnAnimalItemClickLi
         }else {
             menuItemDatabase?.icon = resources.getDrawable(R.drawable.ic_bar_database_c)
         }
-        viewModel.setDbSource(sourceDB!!.also { Log.i("DDD2: sourceDB = ", it) })
+        viewModel.setDbSource(sourceDB!!)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
